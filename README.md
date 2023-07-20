@@ -10,6 +10,10 @@ Welcome to TravellGo! TravellGo is a simple web application to help travellers a
 
 TravellGo is deployed to Vercel, you can try it on the following URL: [travellgo.vercel.app](https://travellgo.vercel.app/).
 
+<div align="center">
+  <img src="https://i.imgur.com/zp0HL17.png" />
+</div>
+
 ## Technologies Used
 
 - React.js
