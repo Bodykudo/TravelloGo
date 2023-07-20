@@ -31,22 +31,3 @@ export const getPlacesData = async (type, sw, ne) => {
     console.error(error);
   }
 };
-
-export const getWeatherData = async (lat, lng) => {
-  const apiKey = import.meta.env.VITE_OPENWEATHERMAP_API_KEY;
-  const apiBaseUrl = 'https://api.openweathermap.org/data/2.5/weather';
-
-  const params = {
-    lat: lat,
-    lon: lng,
-    appid: apiKey,
-    units: 'metric', // You can change this to 'imperial' for Fahrenheit.
-  };
-
-  try {
-    const response = await axios.get(apiBaseUrl, { params });
-    return response.data;
-  } catch (error) {
-    throw new Error('Failed to fetch weather data');
-  }
-};

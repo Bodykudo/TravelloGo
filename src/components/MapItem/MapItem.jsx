@@ -3,11 +3,10 @@ import { InfoWindow, Marker } from '@react-google-maps/api';
 import { StyledCard, classes } from './styles';
 
 function MapItem({
-  place,
   id,
+  place,
   currentItem,
   setSelectedMarker,
-  clickedPlace,
   setClickedPlace,
 }) {
   const handleMarkerClick = (marker) => {

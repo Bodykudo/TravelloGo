@@ -29,11 +29,9 @@ function PlaceDetails({ place, selected, refProp }) {
           title={place.name}
         />
 
-        {place?.name && (
-          <Typography gutterBottom variant="h5">
-            {place.name}
-          </Typography>
-        )}
+        <Typography gutterBottom variant="h5">
+          {place.name}
+        </Typography>
 
         {place?.rating && (
           <Box display="flex" justifyContent="space-between">

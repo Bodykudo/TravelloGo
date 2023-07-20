@@ -1,23 +1,33 @@
+import { useEffect, useState } from 'react';
 import { CssBaseline, Grid } from '@mui/material';
 
 import Header from './components/Header/Header';
 import List from './components/List/List';
 import Map from './components/Map/Map';
-import { useEffect, useState } from 'react';
-import { getPlacesData, getWeatherData } from './api';
+
+import { getPlacesData } from './services/placesDataApi';
+import { getWeatherData } from './services/weatherDataApi';
 
 function App() {
-  const [places, setPlaces] = useState([]);
-  const [filteredPlaces, setFilteredPlaces] = useState([]);
+  // Map Props & States
   const [coordinates, setCoordinates] = useState({});
   const [bounds, setBounds] = useState({});
   const [clickedPlace, setClickedPlace] = useState();
+
+  // Places Data
+  const [places, setPlaces] = useState([]);
+  const [filteredPlaces, setFilteredPlaces] = useState([]);
   const [isLoadingPlaces, setIsLoadingPlaces] = useState(false);
-  const [type, setType] = useState('restaurants');
-  const [rating, setRating] = useState(0);
+
+  // Weather Data
   const [weatherData, setWeatherData] = useState({});
   const [isLoadingWeather, setIsLoadingWeather] = useState(false);
 
+  // Filters States
+  const [type, setType] = useState('restaurants');
+  const [rating, setRating] = useState(0);
+
+  // Default coordinates to user coords once the application starts
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       ({ coords: { latitude, longitude } }) => {
@@ -30,18 +40,11 @@ function App() {
     );
   }, []);
 
-  useEffect(() => {
-    const filteredPlaces = places?.filter((place) => place.rating > rating);
-    setFilteredPlaces(filteredPlaces);
-  }, [rating]);
-
+  // Load new places when user changes the map state
   useEffect(() => {
     if (bounds.sw && bounds.ne) {
-      // console.log(coordinates);
-      // console.log(bounds);
       setIsLoadingPlaces(true);
       getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
-        // console.log(data);
         setFilteredPlaces([]);
         setPlaces(data.filter((place) => place.name));
         setIsLoadingPlaces(false);
@@ -49,6 +52,13 @@ function App() {
     }
   }, [type, bounds]);
 
+  // Filter the places list when the user change the rating
+  useEffect(() => {
+    const filteredPlaces = places?.filter((place) => place.rating > rating);
+    setFilteredPlaces(filteredPlaces);
+  }, [rating]);
+
+  // Load weather data
   useEffect(() => {
     setIsLoadingWeather(true);
     getWeatherData(coordinates.lat, coordinates.lng).then((data) => {
@@ -68,20 +78,19 @@ function App() {
             <List
               places={filteredPlaces.length ? filteredPlaces : places}
               clickedPlace={clickedPlace}
-              isLoadingWeather={isLoadingWeather}
               isLoadingPlaces={isLoadingPlaces}
+              weatherData={weatherData}
+              isLoadingWeather={isLoadingWeather}
               type={type}
               setType={setType}
               rating={rating}
               setRating={setRating}
-              weatherData={weatherData}
             />
           </Grid>
 
           <Grid item xs={12} sm={7} md={8}>
             <Map
               coordinates={coordinates}
-              bounds={bounds}
               setCoordinates={setCoordinates}
               setBounds={setBounds}
               places={filteredPlaces.length ? filteredPlaces : places}

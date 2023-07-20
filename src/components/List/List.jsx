@@ -1,3 +1,4 @@
+import { createRef, useEffect, useState } from 'react';
 import {
   Box,
   CircularProgress,
@@ -8,7 +9,7 @@ import {
   Select,
 } from '@mui/material';
 import { ListContainer, classes } from './styles';
-import { createRef, useEffect, useState } from 'react';
+
 import PlaceDetails from '../PlaceDetails/PlaceDetails';
 import WeatherCard from '../WeatherCard/WeatherCard';
 
@@ -16,15 +17,17 @@ function List({
   places,
   clickedPlace,
   isLoadingPlaces,
+  weatherData,
   isLoadingWeather,
   type,
   setType,
   rating,
   setRating,
-  weatherData,
 }) {
+  // Set the list of refs to empty
   const [elRefs, setElRefs] = useState([]);
 
+  // Once places data is loaded, create ref for each place
   useEffect(() => {
     const refs = Array(places?.length)
       .fill()
@@ -32,6 +35,7 @@ function List({
     setElRefs(refs);
   }, [places]);
 
+  // Handle filters
   function onTypeChange(e) {
     setType(e.target.value);
   }
@@ -43,8 +47,8 @@ function List({
   return (
     <ListContainer className={classes.container}>
       <WeatherCard
-        isLoadingWeather={isLoadingWeather}
         weatherData={weatherData}
+        isLoadingWeather={isLoadingWeather}
       />
 
       {isLoadingPlaces ? (

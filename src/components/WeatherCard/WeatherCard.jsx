@@ -5,12 +5,12 @@ import {
   CircularProgress,
   Typography,
 } from '@mui/material';
-import { StyledCard, classes } from './styles';
-import { countries } from 'country-data';
 import ThermostatIcon from '@mui/icons-material/Thermostat';
 import WaterDropIcon from '@mui/icons-material/WaterDrop';
+import { countries } from 'country-data';
+import { StyledCard, classes } from './styles';
 
-function WeatherCard({ isLoadingWeather, weatherData }) {
+function WeatherCard({ weatherData, isLoadingWeather }) {
   return (
     <StyledCard>
       <Card className={classes.weatherCard} elevation={1}>

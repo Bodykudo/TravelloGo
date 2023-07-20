@@ -1,8 +1,8 @@
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import { useEffect, useRef, useState } from 'react';
-import MapItem from '../MapItem/MapItem';
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import { useMediaQuery } from '@mui/material';
 import { mapStyles } from './mapStyles';
+import MapItem from '../MapItem/MapItem';
 
 function Map({
   coordinates,
@@ -14,8 +14,6 @@ function Map({
   const mapRef = useRef(null);
   const [selectedMarker, setSelectedMarker] = useState(null);
   const isPhone = useMediaQuery('(max-width: 600px)');
-
-  useEffect(() => console.log(isPhone), [isPhone]);
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -74,8 +72,8 @@ function Map({
         {places?.map((place, i) => (
           <div key={i}>
             <MapItem
-              place={place}
               id={i}
+              place={place}
               currentItem={selectedMarker}
               setSelectedMarker={setSelectedMarker}
               setClickedPlace={setClickedPlace}
