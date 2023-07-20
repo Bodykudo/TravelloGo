@@ -2,13 +2,13 @@
   <img src="public/logo.png" height="200px" />
 </div>
 
-# TravellGo
+# TravelloGo
 
-Welcome to TravellGo! TravellGo is a simple web application to help travellers around the world check the best restaruants, hotels, and different attractions to whetver the place they are travelling to.
+Welcome to TravelloGo! TravelloGo is a simple web application to help travellers around the world check the best restaruants, hotels, and different attractions to whetver the place they are travelling to.
 
 ## Demo
 
-TravellGo is deployed to Vercel, you can try it on the following URL: [travellgo.vercel.app](https://travellgo.vercel.app/).
+TravelloGo is deployed to Vercel, you can try it on the following URL: [travellogo.vercel.app](https://travellogo.vercel.app/).
 
 ## Technologies Used
 
@@ -19,7 +19,7 @@ TravellGo is deployed to Vercel, you can try it on the following URL: [travellgo
 
 ## Installation
 
-To install and run the TravellGo locally, follow these steps:
+To install and run the TravelloGo locally, follow these steps:
 
 1. Clone the project repository.
 2. Navigate to the project directory.
