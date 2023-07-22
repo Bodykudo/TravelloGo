@@ -11,7 +11,7 @@ Welcome to TravelloGo! TravelloGo is a simple web application to help travelers 
 TravelloGo is deployed to Vercel. You can try it on the following URL: [travellogo.vercel.app](https://travellogo.vercel.app/).
 
 <div align="center">
-  <img src="https://i.imgur.com/zp0HL17.png" />
+  <img src="public/mockup.png" />
 </div>
 
 ## Technologies Used
